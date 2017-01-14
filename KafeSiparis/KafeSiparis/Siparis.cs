@@ -39,6 +39,10 @@ namespace KafeSiparis
             }
         }
 
+        public override string ToString()
+        {
+            return isim + "\t\t"+ adet+ "\t"+ tutar;
+        }
 
 
     }

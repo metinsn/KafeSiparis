@@ -15,5 +15,8 @@ namespace KafeSiparis
 
         public int masaNo { get; set; }
         public List<Siparis> siparisler { get; set; }
+
+        
     }
+
 }

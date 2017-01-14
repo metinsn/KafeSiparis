@@ -136,16 +136,36 @@
             // numIcecekMiktar
             // 
             this.numIcecekMiktar.Location = new System.Drawing.Point(133, 81);
+            this.numIcecekMiktar.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numIcecekMiktar.Name = "numIcecekMiktar";
             this.numIcecekMiktar.Size = new System.Drawing.Size(53, 20);
             this.numIcecekMiktar.TabIndex = 5;
+            this.numIcecekMiktar.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // numYemekMiktar
             // 
             this.numYemekMiktar.Location = new System.Drawing.Point(133, 40);
+            this.numYemekMiktar.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numYemekMiktar.Name = "numYemekMiktar";
             this.numYemekMiktar.Size = new System.Drawing.Size(53, 20);
             this.numYemekMiktar.TabIndex = 4;
+            this.numYemekMiktar.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // cmBoxYemek
             // 

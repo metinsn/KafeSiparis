@@ -16,7 +16,7 @@ namespace KafeSiparis
         {
             InitializeComponent();
         }
-        
+
 
         Masa[] masalar = new Masa[15];
 
@@ -25,18 +25,18 @@ namespace KafeSiparis
             lstBoxSiparisler.Items.Add("Ürün Adı \t\t\t Adet \t Fiyat\t");
 
             int no = 0;
-            for (int i = 0; i <= 5; i++)
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j <= 3; j++)
+                for (int j = 0; j < 3; j++)
                 {
                     Button buton = new Button();
                     buton.BackColor = Color.DarkSalmon;
-                    buton.Width = 40;
-                    buton.Height = 40;
+                    buton.Width = 50;
+                    buton.Height = 50;
                     no++;
                     buton.Text = Convert.ToString(no);
-                    buton.Left = 10 + (buton.Width) * (j);
-                    buton.Top = 20 + (buton.Height) * (i);
+                    buton.Left = 20 + (buton.Width) * (j);
+                    buton.Top = 10 + (buton.Height) * (i);
                     buton.Click += buton_click;
                     groupBox1.Controls.Add(buton);
                 }
@@ -74,6 +74,13 @@ namespace KafeSiparis
             }
 
             masalar[m.masaNo - 1] = m;
+
+            foreach (var item in m.siparisler)
+            {
+                lstBoxSiparisler.Items.Add(item);
+            }
+           
+
 
         }
     }
