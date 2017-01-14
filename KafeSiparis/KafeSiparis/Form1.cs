@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -27,11 +21,11 @@ namespace KafeSiparis
             xmlgeir.Load("http://www.tcmb.gov.tr/kurlar/today.xml");
             DateTime Tarih = Convert.ToDateTime(xmlgeir.SelectSingleNode("//Tarih_Date").Attributes["Tarih"].Value);
             lblTarih.Text = Tarih.ToString("dd/MM/yyyy");
-            lblDolar.Text= xmlgeir.SelectSingleNode("//Tarih_Date/Currency[@Kod='USD']/BanknoteSelling").InnerXml;
-            lblEuro.Text = xmlgeir.SelectSingleNode("//Tarih_Date/Currency[@Kod='EUR']/BanknoteSelling").InnerXml;
+            lblDolar.Text = xmlgeir.SelectSingleNode("//Tarih_Date/Currency[@Kod='USD']/BanknoteSelling").InnerXml.Replace(".", ",");
+            lblEuro.Text = xmlgeir.SelectSingleNode("//Tarih_Date/Currency[@Kod='EUR']/BanknoteSelling").InnerXml.Replace(".", ",");
 
 
-            lstBoxSiparisler.Items.Add("ÜRÜN ADI\t\t ADET \t FİYAT\t");
+            lstBoxSiparisler.Items.Add("ÜRÜN ADI\t\t ADET \t FİYAT(TL)\t");
 
             int no = 0;
             for (int i = 0; i < 5; i++)
@@ -89,12 +83,47 @@ namespace KafeSiparis
             {
                 lstBoxSiparisler.Items.Add(item);
             }
-
-
-            groupBox1.Enabled = true ;
+            groupBox1.Enabled = true;
 
 
 
+        }
+
+        private void btnOde_Click(object sender, EventArgs e)
+        {
+            if (lstBoxSiparisler.SelectedIndex != -1 && lstBoxSiparisler.SelectedIndex != 0)
+            {
+                Siparis sip = (Siparis)lstBoxSiparisler.SelectedItem;
+
+                if (rbtnEuro.Checked == true)
+                {
+                    DialogResult sonuc = MessageBox.Show("Ödeme yapmak istermisiniz ?\n " + "Tutar : " +
+                    Math.Round(sip.tutar / Convert.ToDouble(lblEuro.Text), 2) + " EURO", "Ödeme Bilgi", MessageBoxButtons.YesNo);
+                    if (sonuc == DialogResult.Yes)
+                    {
+                        Masa m = new Masa();
+                    }
+                }
+                else if (rbtnUSD.Checked == true)
+                {
+                    DialogResult sonuc = MessageBox.Show("Ödeme yapmak istermisiniz ?\n " + "Tutar : " +
+                    Math.Round(sip.tutar / Convert.ToDouble(lblDolar.Text), 2) + " USD", "Ödeme Bilgi", MessageBoxButtons.YesNo);
+                    if (sonuc == DialogResult.Yes)
+                    {
+                        Masa m = new Masa();
+                    }
+                }
+                else
+                {
+                    DialogResult sonuc = MessageBox.Show("Ödeme yapmak istermisiniz ?\n " + "Tutar : "+ sip.tutar +" TL", "Ödeme Bilgi", MessageBoxButtons.YesNo);
+                    if (sonuc == DialogResult.Yes)
+                    {
+                        Masa m = new Masa();
+                    }
+                }
+
+
+            }
         }
     }
 }

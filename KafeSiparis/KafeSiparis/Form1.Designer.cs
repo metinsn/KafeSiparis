@@ -255,6 +255,7 @@
             this.btnOde.TabIndex = 4;
             this.btnOde.Text = "Ödeme";
             this.btnOde.UseVisualStyleBackColor = true;
+            this.btnOde.Click += new System.EventHandler(this.btnOde_Click);
             // 
             // label5
             // 
