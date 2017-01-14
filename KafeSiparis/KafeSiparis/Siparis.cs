@@ -6,12 +6,40 @@ using System.Threading.Tasks;
 
 namespace KafeSiparis
 {
-    class Siparis
+    public class Siparis
     {
-        public int yemek { get; set; }
-        public int icecek { get; set; }
-        public int yemekMiktar { get; set; }
-        public int icecekMiktar { get; set; }
+        public string isim { get; set; }
+        public int adet { get; set; }
+        public int tutar
+        {
+            get
+            {
+                if (isim == "Kuru Fasulye")
+                    return adet  * 5;
+                else if (isim == "Tavuklu Pilav")
+                    return adet  * 6;
+                else if (isim == "Pizza")
+                    return adet * 10;
+                else if (isim == "Hamburger")
+                    return adet * 8;
+                else if (isim == "Tost")
+                    return adet * 3;
+                else if (isim == "Cola")
+                    return adet * 3;
+                else if (isim == "Fanta")
+                    return adet * 3;
+                else if (isim == "Çay")
+                    return adet * 2;
+                else if (isim == "Su")
+                    return adet * 1;
+                else if (isim == "Kahve")
+                    return adet * 5;
+                else
+                    return 0;
+            }
+        }
+
+
 
     }
 }

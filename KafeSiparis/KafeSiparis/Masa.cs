@@ -8,8 +8,12 @@ namespace KafeSiparis
 {
     public class Masa
     {
-        public int masaNo { get; set; }
-        List<Siparis> Sip = new List<Siparis>();
+        public Masa()
+        {
+            siparisler = new List<Siparis>();
+        }
 
+        public int masaNo { get; set; }
+        public List<Siparis> siparisler { get; set; }
     }
 }
