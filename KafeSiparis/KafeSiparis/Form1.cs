@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace KafeSiparis
 {
@@ -22,7 +23,15 @@ namespace KafeSiparis
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            lstBoxSiparisler.Items.Add("Ürün Adı \t\t\t Adet \t Fiyat\t");
+            XmlDocument xmlgeir = new XmlDocument();
+            xmlgeir.Load("http://www.tcmb.gov.tr/kurlar/today.xml");
+            DateTime Tarih = Convert.ToDateTime(xmlgeir.SelectSingleNode("//Tarih_Date").Attributes["Tarih"].Value);
+            lblTarih.Text = Tarih.ToString("dd/MM/yyyy");
+            lblDolar.Text= xmlgeir.SelectSingleNode("//Tarih_Date/Currency[@Kod='USD']/BanknoteSelling").InnerXml;
+            lblEuro.Text = xmlgeir.SelectSingleNode("//Tarih_Date/Currency[@Kod='EUR']/BanknoteSelling").InnerXml;
+
+
+            lstBoxSiparisler.Items.Add("ÜRÜN ADI\t\t ADET \t FİYAT\t");
 
             int no = 0;
             for (int i = 0; i < 5; i++)
@@ -36,7 +45,7 @@ namespace KafeSiparis
                     no++;
                     buton.Text = Convert.ToString(no);
                     buton.Left = 20 + (buton.Width) * (j);
-                    buton.Top = 10 + (buton.Height) * (i);
+                    buton.Top = 15 + (buton.Height) * (i);
                     buton.Click += buton_click;
                     groupBox1.Controls.Add(buton);
                 }
@@ -48,6 +57,7 @@ namespace KafeSiparis
             secbuton.BackColor = Color.Aqua;
             groupBox2.Enabled = true;
             lblMasaNo.Text = secbuton.Text;
+            groupBox1.Enabled = false;
 
         }
 
@@ -79,7 +89,10 @@ namespace KafeSiparis
             {
                 lstBoxSiparisler.Items.Add(item);
             }
-           
+
+
+            groupBox1.Enabled = true ;
+
 
 
         }

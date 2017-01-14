@@ -14,25 +14,25 @@ namespace KafeSiparis
         {
             get
             {
-                if (isim == "Kuru Fasulye")
+                if (isim == "Kuru Fasulye ")
                     return adet  * 5;
                 else if (isim == "Tavuklu Pilav")
                     return adet  * 6;
-                else if (isim == "Pizza")
+                else if (isim == "Pizza        ")
                     return adet * 10;
-                else if (isim == "Hamburger")
+                else if (isim == "Hamburger    ")
                     return adet * 8;
-                else if (isim == "Tost")
+                else if (isim == "Tost         ")
                     return adet * 3;
-                else if (isim == "Cola")
+                else if (isim == "Cola         ")
                     return adet * 3;
-                else if (isim == "Fanta")
+                else if (isim == "Fanta        ")
                     return adet * 3;
-                else if (isim == "Çay")
+                else if (isim == "Çay          ")
                     return adet * 2;
-                else if (isim == "Su")
+                else if (isim == "Su           ")
                     return adet * 1;
-                else if (isim == "Kahve")
+                else if (isim == "Kahve        ")
                     return adet * 5;
                 else
                     return 0;
@@ -41,7 +41,7 @@ namespace KafeSiparis
 
         public override string ToString()
         {
-            return isim + "\t\t"+ adet+ "\t"+ tutar;
+            return isim + " \t\t  "+ adet+ " \t  "+ tutar;
         }
 
 
