@@ -96,20 +96,22 @@ namespace KafeSiparis
             if (lstBoxSiparisler.SelectedIndex != -1 && lstBoxSiparisler.SelectedIndex != 0)
             {
                 
-                int secindex = lstBoxSiparisler.SelectedIndex;
+                //int secindex = lstBoxSiparisler.SelectedIndex;
+                //Masa ms = (Masa)lstBoxSiparisler.SelectedItem;                
 
                 if (rbtnEuro.Checked == true)
                 {
-                    DialogResult sonuc = MessageBox.Show("Ödeme yapmak istermisiniz ?\n " + "Tutar : " +
+                    DialogResult sonuc = MessageBox.Show("Ödeme yapmak istermisiniz ?\n\n" + "Tutar : " +
                     Math.Round(sip.tutar / Convert.ToDouble(lblEuro.Text), 2) + " EURO", "Ödeme Bilgi", MessageBoxButtons.YesNo);
                     if (sonuc == DialogResult.Yes)
                     {
                         lstBoxSiparisler.Items.Remove(lstBoxSiparisler.SelectedItem);
+                        //ms.siparisler[secindex].tutar=0;
                     }
                 }
                 else if (rbtnUSD.Checked == true)
                 {
-                    DialogResult sonuc = MessageBox.Show("Ödeme yapmak istermisiniz ?\n " + "Tutar : " +
+                    DialogResult sonuc = MessageBox.Show("Ödeme yapmak istermisiniz ?\n\n " + "Tutar : " +
                     Math.Round(sip.tutar / Convert.ToDouble(lblDolar.Text), 2) + " USD", "Ödeme Bilgi", MessageBoxButtons.YesNo);
                     if (sonuc == DialogResult.Yes)
                     {
@@ -118,7 +120,7 @@ namespace KafeSiparis
                 }
                 else
                 {
-                    DialogResult sonuc = MessageBox.Show("Ödeme yapmak istermisiniz ?\n " + "Tutar : "+ sip.tutar +" TL", "Ödeme Bilgi", MessageBoxButtons.YesNo);
+                    DialogResult sonuc = MessageBox.Show("Ödeme yapmak istermisiniz ?\n\n " + "Tutar : "+ sip.tutar +" TL", "Ödeme Bilgi", MessageBoxButtons.YesNo);
                     if (sonuc == DialogResult.Yes)
                     {
                         lstBoxSiparisler.Items.Remove(lstBoxSiparisler.SelectedItem);
