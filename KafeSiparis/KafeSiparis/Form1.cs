@@ -59,6 +59,7 @@ namespace KafeSiparis
         {
             Masa m = new Masa();
             m.masaNo = int.Parse(lblMasaNo.Text);
+            lblMasaNo.Text = "";
 
 
             Siparis sp = new Siparis();
@@ -91,9 +92,11 @@ namespace KafeSiparis
 
         private void btnOde_Click(object sender, EventArgs e)
         {
+            Siparis sip = (Siparis)lstBoxSiparisler.SelectedItem;
             if (lstBoxSiparisler.SelectedIndex != -1 && lstBoxSiparisler.SelectedIndex != 0)
             {
-                Siparis sip = (Siparis)lstBoxSiparisler.SelectedItem;
+                
+                int secindex = lstBoxSiparisler.SelectedIndex;
 
                 if (rbtnEuro.Checked == true)
                 {
@@ -101,7 +104,7 @@ namespace KafeSiparis
                     Math.Round(sip.tutar / Convert.ToDouble(lblEuro.Text), 2) + " EURO", "Ödeme Bilgi", MessageBoxButtons.YesNo);
                     if (sonuc == DialogResult.Yes)
                     {
-                        Masa m = new Masa();
+                        lstBoxSiparisler.Items.Remove(lstBoxSiparisler.SelectedItem);
                     }
                 }
                 else if (rbtnUSD.Checked == true)
@@ -110,7 +113,7 @@ namespace KafeSiparis
                     Math.Round(sip.tutar / Convert.ToDouble(lblDolar.Text), 2) + " USD", "Ödeme Bilgi", MessageBoxButtons.YesNo);
                     if (sonuc == DialogResult.Yes)
                     {
-                        Masa m = new Masa();
+                        lstBoxSiparisler.Items.Remove(lstBoxSiparisler.SelectedItem);
                     }
                 }
                 else
@@ -118,7 +121,7 @@ namespace KafeSiparis
                     DialogResult sonuc = MessageBox.Show("Ödeme yapmak istermisiniz ?\n " + "Tutar : "+ sip.tutar +" TL", "Ödeme Bilgi", MessageBoxButtons.YesNo);
                     if (sonuc == DialogResult.Yes)
                     {
-                        Masa m = new Masa();
+                        lstBoxSiparisler.Items.Remove(lstBoxSiparisler.SelectedItem);
                     }
                 }
 
