@@ -10,6 +10,7 @@ namespace KafeSiparis
     {
         public string isim { get; set; }
         public int adet { get; set; }
+
         public int tutar
         {
             get
